@@ -11,8 +11,9 @@ class Videos(models.Model):
 
 class Pdfs(models.Model):
     
-    title = models.CharField(max_length=255)
+    pdf_id = models.CharField(max_length=255)
+    pdf_title = models.CharField(max_length=255)
     pdf_file = models.FileField(upload_to='pdfs/')
 
     def __str__(self):
-        return self.title
+        return self.pdf_title

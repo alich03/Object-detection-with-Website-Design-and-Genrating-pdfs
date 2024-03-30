@@ -10,12 +10,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #ffcc7f;
             color: #333;
         }
 
         .nav {
-            background-color: #f0f0f0;
+            background-color: #ee670d;
             border: #b7b8b9 1px groove;
             display: flex;
             justify-content: space-around;
@@ -46,7 +46,7 @@
         }
 
         .nav a:hover,.sidebar a:hover {
-            background-color: #f7b5a7;
+            background-color:  #c57103;
             transform: translateY(-2px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
@@ -70,36 +70,31 @@
 
         /* Colored backgrounds for pages */
         #dashboard{
-            background-color: #cac9c9; /* Light Red */
+            background-color: #c57103; /* Light Red */
             width: 74%;
             /* margin-top: 80px; */
             float: right;
         }
         #ud {
-            background-color: #c2bfbd;
+            background-color: #c57103;
             width: 100%;
             margin-top: 80px;
             float: right;
         }
 
         #history {
-            background-color: #bcc5be; /* Light Green */
+            background-color: #c57103; /* Light Green */
             width: 100%;
             float: right;
         }
 
         #portal {
-            background-color: #c2bebb; /* Light Grey */
+            background-color: #c57103; /* Light Grey */
             width: 74%;
             float: right;
         }
 
-        #ai-content {
-            background-color: #bbc4c4; /* Light Blue Grey */
-            width: 74%;
-            float: right;
-
-        }
+       
 
         h1 {
             font-size: 24px;
@@ -119,10 +114,14 @@
             justify-content: space-between;
             margin-top: 10px;
             margin-left: 70px;
-            background-color: #adb1ac;
+            background-color: #ffa632;
             border-radius: 10px;
             padding:5px;
             font-weight: bold;
+        }
+
+       .pdf_file_box:hover {
+            background-color:  #ee670d;
         }
 
         .activity {
@@ -156,7 +155,7 @@
         }
 
         .portal-button {
-            background-color: #faece9;
+            background-color: #ffa632;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -179,7 +178,7 @@
         }
 
         .dashboard-button {
-            background-color: #fae6e5;
+            background-color: #ffa632;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -201,6 +200,7 @@
       .pdf_box_button:hover{
         transform: translateY(-2px);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        
 
 
       }
@@ -246,7 +246,7 @@
             width: 23%; 
             margin-left: 70px;
             height: 150px; /* Set the height */
-            background-color: #8f8e8e;/* Background color */
+            background-color: #ffa632;/* Background color */
             color: #fff; /* Text color */
             text-align: center; /* Center text horizontally */
             /* line-height: 100px; Center text vertically */
@@ -255,7 +255,7 @@
         }
         
         .box:hover{
-            background-color: rgb(161, 140, 140);
+            background-color:  #ee670d;
         }
         #h{
             text-align: center;
@@ -267,7 +267,7 @@
 
         }
         .search_box button:hover{
-            background-color: greenyellow;
+            background-color:  #ee670d;
             font-size: 12px;
         }
         .search_wrapper{
@@ -311,7 +311,7 @@
 
         
         <div class="box"><br>
-        <a style="text-decoration: none ; color: white; font-weight: bold;" href="/run_model/video/">Detect with upload Video</a>
+        <a style="text-decoration: none ; color: white; font-weight: bold;" href="/run_model/video/">Video upload</a>
             <h3>Icon</h3>
             
         </div>
@@ -325,7 +325,7 @@
         <div class="box"><br>
             <div>All Pdf files</div>
             <h3>Total </h3>
-             <h1>1</h1>
+             <h1> {{ pdfs|length }} </h1>
         </div>
     </div>
     <div class="search_wrapper">
@@ -340,12 +340,20 @@
     <div id="history" class="page">
 
         <h1 id="h" >PDF Files</h1>
-
+        {% for pdf in pdfs %}
         <div class="pdf_file_box">
-            <p >request.user_2024-03-18 22-47-39.pdf</p>
-            <p >pdf file</p>
-            <p class="pdf_box_button">Download pdf</p>
+            <p >{{pdf.pdf_title}}</p>
+            <p >{{pdf.pdf_id}}</p>
+            <!-- <p >pdf file</p> -->
+            <!-- <h1>Download PDF</h1> -->
+            <a href="/media/pdfs/{{pdf.pdf_title}}" download="{{pdf.pdf_title}}">
+                    <!-- <button>Download PDF File</button> -->
+                    <h5> download </h5> </a>
+            <!-- <p class="pdf_box_button">Download pdf</p> -->
         </div>
+        {%empty%}
+        <span class="page"> No Pdf Found</span>
+        {% endfor %}
        
        
 
