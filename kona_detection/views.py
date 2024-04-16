@@ -66,10 +66,10 @@ def run_model_live(request):
                                                 
                                                 
     
-         cv2.imshow("live camera for kona", frame)
+        cv2.imshow("live camera for kona", frame)
 
 
-         if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
              break
 
     # cap.release()
