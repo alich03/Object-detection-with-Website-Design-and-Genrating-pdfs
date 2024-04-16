@@ -66,14 +66,14 @@ def run_model_live(request):
                                                 
                                                 
     
-        cv2.imshow("live camera for kona", frame)
+    #     cv2.imshow("live camera for kona", frame)
 
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+    #     if cv2.waitKey(1) & 0xFF == ord('q'):
+    #         break
 
-    cap.release()
-    cv2.destroyAllWindows()
+    # cap.release()
+    # cv2.destroyAllWindows()
     #creating pdf file from detected objects from model
     current_datetime=datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     if len(objects_list) != 0:
