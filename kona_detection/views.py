@@ -136,13 +136,13 @@ def run_model_video(request):
                                                     for index, product in enumerate(objects_list):
                                                         if product['name'] == class_name and confidence > product['price']:
                                                             objects_list[index] = detected_obj
-                cv2.imshow("live camera for kona", frame)
+            #     cv2.imshow("live camera for kona", frame)
 
-                if cv2.waitKey(1) & 0xFF == ord('q'):
-                    break
+            #     if cv2.waitKey(1) & 0xFF == ord('q'):
+            #         break
 
             cap.release()
-            cv2.destroyAllWindows()
+            # cv2.destroyAllWindows()
             
             current_datetime=datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
             if len(objects_list) != 0:

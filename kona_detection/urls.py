@@ -1,5 +1,5 @@
 from django.urls import path,include
-from . import views
+from kona_detection import views
 
 urlpatterns = [
 
